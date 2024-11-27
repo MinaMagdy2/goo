@@ -3,12 +3,14 @@ workflows:
     name: iOS Workflow
     environment:
       vars:
-        NODE_VERSION: 16  # حدد إصدار Node.js الذي تحتاجه
+        NODE_VERSION: 16  # حدد إصدار Node.js المناسب
     scripts:
       - name: Install dependencies
-        script: npm install  # تثبيت الحزم
+        script: |
+          npm install -g npm@latest  # تحديث npm إلى الإصدار الأحدث
+          npm install  # تثبيت التبعيات
       - name: Build iOS app
-        script: npx eas build -p ios --non-interactive  # بناء التطبيق باستخدام EAS
+        script: |
+          npx eas build -p ios --non-interactive  # بناء التطبيق باستخدام EAS
     artifacts:
       - build/ios/*.ipa  # حفظ ملف .ipa الناتج عن عملية البناء
-
