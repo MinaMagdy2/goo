@@ -5,8 +5,6 @@ workflows:
       vars:
         FLUTTER_VERSION: stable
     scripts:
-      - name: Change to project directory
-        script: cd my_project_directory
       - name: Install dependencies
         script: flutter pub get
       - name: Build iOS app
