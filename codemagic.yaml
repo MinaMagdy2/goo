@@ -3,11 +3,12 @@ workflows:
     name: iOS Workflow
     environment:
       vars:
-        FLUTTER_VERSION: stable
+        NODE_VERSION: 16  # حدد إصدار Node.js الذي تحتاجه
     scripts:
       - name: Install dependencies
-        script: flutter pub get
+        script: npm install  # تثبيت الحزم
       - name: Build iOS app
-        script: flutter build ios --release
+        script: npx eas build -p ios --non-interactive  # بناء التطبيق باستخدام EAS
     artifacts:
-      - build/ios/ipa
+      - build/ios/*.ipa  # حفظ ملف .ipa الناتج عن عملية البناء
+
